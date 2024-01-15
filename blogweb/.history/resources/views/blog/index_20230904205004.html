@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Show Image as ImageBitmap</title>
+</head>
+<body>
+  <img src="https://unsplash.com/photos/203x202" id="myImage"> <!-- Replace 'path/to/your-image.jpg' with the actual path to your image -->
+
+  <canvas id="canvas"></canvas>
+
+  <!-- <script>
+    // Create an ImageBitmap from an <img> element
+    const imgElement = document.getElementById('myImage');
+    createImageBitmap(imgElement).then((imageBitmap) => {
+      // You can now use the 'imageBitmap' for rendering or manipulation
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = imageBitmap.width;
+      canvas.height = imageBitmap.height;
+      ctx.drawImage(imageBitmap, 0, 0);
+    }).catch((error) => {
+      console.error('Error creating ImageBitmap:', error);
+    });
+  </script> -->
+</body>
+</html>

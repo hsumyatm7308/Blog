@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Show Image as ImageBitmap</title>
+</head>
+<body>
+  <img src="valentin-antonini-MnX7KydG8vw-unsplash.jpg" id="myImage" width="200px"> 
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const imgElement = document.getElementById('myImage');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Check if the image has loaded
+    imgElement.addEventListener('load', () => {
+      createImageBitmap(imgElement).then((imageBitmap) => {
+        // You can now use the 'imageBitmap' for rendering or manipulation
+        // canvas.width = imageBitmap.width;
+        // canvas.height = imageBitmap.height;
+        // ctx.drawImage(imageBitmap, 10, 0);
+
+        console.log(imageBitmap)
+      }).catch((error) => {
+        console.error('Error creating ImageBitmap:', error);
+      });
+    });
+  </script>
+</body>
+</html>
+
+

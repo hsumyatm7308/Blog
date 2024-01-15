@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@yield('title')</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<style>
+    /* for nav  */
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    /* for body  */
+    @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
+    body {
+        font-family: 'Lato', sans-serif;
+    }
+
+    nav {
+        font-family: 'Lobster', cursive;
+    }
+
+
+    .container {
+        width: 80%;
+        height: auto;
+        /* background-color: antiquewhite; */
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+
+
+    }
+
+    .navlabel {
+        position: relative;
+        /* background-color: aqua; */
+    }
+
+    .lictn {
+        position: relative;
+    }
+
+    .skewtextctn,
+    .skewtextctn2 {
+        width: 50px;
+        height: 30px;
+        border-radius: 100%;
+        border-left: 1px solid black;
+
+        position: fixed;
+        top: 25px;
+
+
+
+
+        transform: skew(-40deg);
+
+    }
+
+    .skewtextctn {
+        left: 700px;
+    }
+
+    .skewtextctn2 {
+        left: 800px;
+    }
+
+
+
+    .article {
+        position: fixed;
+        left: 1px;
+
+        top: 1px;
+        transform: skew(40deg);
+
+    }
+
+    .skewtextctn:hover,
+    .skewtextctn2:hover {
+        transition: all .5s;
+        background-color: rgb(51 65 85);
+    }
+
+    .skewtextctn:hover .article,
+    .skewtextctn2:hover .article {
+        color: #000;
+    }
+</style>
+
+<body class="bg-[#ffff]">
+    <nav class="w-[100vw] flex justify-center items-center">
+        <h1 class="text-3xl font-semibold">Perfect Theme</h1>
+
+        <div class="w-[80%] h-20 flex justify-center items-center container">
+            <div class="flex justify-between items-center list-none navlabel">
+                <li class="p-5 mr-4 lictn">
+                    <div class="bg-yellow-100 skewtextctn">
+                        <a href="" class="text-xl text-black article">Home</a>
+                    </div>
+                </li>
+
+                <li class="p-5 mr-4">
+                    <div class=" active">
+                        <a href="" class="text-xl text-black ">Article</a>
+                    </div>
+                </li>
+            </div>
+
+
+        </div>
+
+        <div class=" menu ">
+            <span class="text-xs flex justify-center items-center flex-col">
+                <div class="w-10 h-[2px] bg-black"></div>
+                <span class="p-1 hover:self-end hover:text-yellow-500"> menu</span>
+                <div class="w-10 h-[2px] bg-black font-semibold"></div>
+            </span>
+        </div>
+    </nav>
+
+
+
+    <div id="menu-modal"
+        class="menu-modal w-[100%]  h-screen bg-[linear-gradient(rgba(233,233,233,.5),rgba(233,233,233,.5))] absolute left-0 top-0 flex justify-center items-center">
+        <div id="blankspace" class="w-[100%] h-[100vh] p-0 ">
+
+        </div>
+        <div class="max-w-[500px] h-[100vh] bg-white absolute right-0 top-0  border border-slate-100">
+
+            <div class="w-full h-40 flex justify-center items-center">
+                <form action="" method="post" class="relative">
+                    <i class="fa-solid fa-magnifying-glass text-stone-500 text-lg absolute left-3 top-[12px]"></i>
+                    <input type="search"
+                        class=" border-2 px-32 py-3 pl-10 bg-stone-100 font-thin focus:outline-none	focus:border focus:border-emerald-600 focus:ring-1 focus:ring-emerald-400"
+                        placeholder="Search...">
+                </form>
+            </div>
+            <hr>
+
+
+            <div class="mt-4">
+                <div class="px-14 py-4 group hover:text-emerald-600">
+                    <li class="list-none pb-5">
+                        <a href="" class="uppercase text-sm font-semibold group-hover:text-emerald-600">Lorem ipsum</a>
+                        <p class="text-stone-400 mt-2 group-hover:text-emerald-600">dolor sit amet consectetur elit.</p>
+                    </li>
+                    <hr>
+                </div>
+                
+
+                <div class="px-14 py-4 group hover:text-emerald-600">
+                    <li class="list-none pb-5">
+                        <a href="" class="uppercase text-sm font-semibold group-hover:text-emerald-600" >dolor sit</a>
+                        <p class="text-stone-400 mt-2 group-hover:text-emerald-600"> amet consectetur dolor sit adipisicing elit.</p>
+
+                    </li>
+                    <hr>
+                </div>
+
+
+                <div class="px-14 py-4 group hover:text-emerald-600">
+                    <li class="list-none pb-5">
+                        <a href="" class="uppercase text-sm font-semibold  group-hover:text-emerald-600">dolor sit</a>
+                        <p class="text-stone-400 mt-2 group-hover:text-emerald-600" > amet consectetur dolor adipisicing.</p>
+
+                    </li>
+                    <hr>
+                </div>
+
+                <div class="px-14 py-4 group hover:text-emerald-600">
+                    <li class="list-none  pb-3 hover:text-emerald-400">
+                        <a href="" class="uppercase text-sm font-semibold group-hover:text-emerald-600">amet consectetur </a>
+                        <p class="text-stone-400 mt-2 group-hover:text-emerald-600"> consectetur sit adipisicing elit.</p>
+
+                    </li>
+
+                </div>
+                <hr class="mb-10">
+
+                <div class=" px-14">
+                    <div class="px-4 py-4 border-2 flex justify-center items-center mt-5 hover:border-emerald-600 hover:text-emerald-500 ">
+                        <button class="uppercase text-sm">Log in</button>
+                    </div>
+                    
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        const menumodal = document.getElementById("menu-modal"); 
+        var menu = document.querySelector('.menu');
+        menu.addEventListener('click', function () {
+
+        })
+
+        var blankspace = document.getElementById('blankspace');
+        blankspace.addEventListener('click',()=>{
+            console.log("hello");
+        })
+
+    </script>
+</body>
+
+</html>

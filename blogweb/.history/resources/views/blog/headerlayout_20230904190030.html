@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@yield('title')</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+    body {
+        font-family: 'Lobster', cursive;
+    }
+
+    .container {
+        width: 80%;
+        height: auto;
+        /* background-color: antiquewhite; */
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+
+
+    }
+
+    .navlabel {
+        position: relative;
+        /* background-color: aqua; */
+    }
+
+    .lictn {
+        position: relative;
+    }
+
+    .skewtextctn,
+    .skewtextctn2 {
+        width: 50px;
+        height: 30px;
+        border-radius: 100%;
+        border-left: 1px solid black;
+
+        position: fixed;
+        top: 25px;
+
+
+
+
+        transform: skew(-40deg);
+
+    }
+
+    .skewtextctn {
+        left: 700px;
+    }
+
+    .skewtextctn2 {
+        left: 800px;
+    }
+
+
+
+    .article {
+        position: fixed;
+        left: 1px;
+
+        top: 1px;
+        transform: skew(40deg);
+
+    }
+
+    .skewtextctn:hover,
+    .skewtextctn2:hover {
+        transition: all .5s;
+        background-color: rgb(51 65 85);
+    }
+
+    .skewtextctn:hover .article,
+    .skewtextctn2:hover .article {
+        color: #000;
+    }
+</style>
+
+<body class="bg-[#ffff]">
+    <nav class="w-[100vw] flex justify-center items-center">
+        <h1 class="text-3xl font-semibold">Perfect Theme</h1>
+
+        <div class="w-[80%] h-20 flex justify-center items-center container">
+            <div class="flex justify-between items-center list-none navlabel">
+                <li class="p-5 mr-4 lictn">
+                    <div class="bg-yellow-100 skewtextctn">
+                        <a href="" class="text-xl text-black article">Home</a>
+                    </div>
+                </li>
+
+                <li class="p-5 mr-4">
+                    <div class=" active">
+                        <a href="" class="text-xl text-black ">Article</a>
+                    </div>
+                </li>
+            </div>
+
+
+        </div>
+
+        <div class=" menu ">
+            <span class="text-xs flex justify-center items-center flex-col">
+                <div class="w-10 h-[2px] bg-black"></div>
+                <span class="p-1 hover:self-end hover:text-yellow-500"> menu</span>
+                <div class="w-10 h-[2px] bg-black font-semibold"></div>
+            </span>
+        </div>
+    </nav>
+
+
+
+    <div class="menu-modal w-screen bg-[linear-gradient(rgba(233,233,233,.5),rgba(233,233,233,.5))] h-screen absolute left-0 top-0">
+        <div class="w-[450px] h-[100vh] bg-white absolute right-0 top-0 border border-slate-100">
+           
+            <div class="w-full h-40 border-b border-b-2 flex justify-center items-center">
+                <form action="" method="post" class="relative">
+                    <i class="fa-solid fa-magnifying-glass text-stone-500 absolute left-4 top-[15px]"></i>
+                    <input type="search" class="border-2 px-8 py-2 pl-10 bg-stone-100 font-thin focus:outline-none	focus:border focus:border-yellow-100" placeholder="search">
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        var menu = document.querySelector('.menu');
+        menu.addEventListener('click',function(){
+
+        })
+    </script>
+</body>
+
+</html>

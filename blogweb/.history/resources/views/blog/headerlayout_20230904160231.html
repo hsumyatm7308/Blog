@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@yield('title')</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+    body {
+        font-family: 'Lobster', cursive;
+    }
+
+    .container {
+        width: 80%;
+        height: auto;
+        background-color: antiquewhite;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+
+
+    }
+
+    .navlabel {
+        position: relative;
+        background-color: aqua;
+    }
+
+    .lictn{
+        position: relative;
+    }
+
+    .skewtextctn {
+        width: 30px;
+        height: 30px;
+
+        background: gold;
+
+        position: fixed;
+      
+        transform: skew(-40deg);
+
+
+    }
+
+    .article {
+        position: fixed;
+        left: 50%;
+
+        top: 10px;
+        
+
+
+        transform: skew(40deg);
+
+    }
+</style>
+
+<body class="bg-[#ffff]">
+    <nav class="w-[100vw] flex justify-center items-center">
+        <h1 class="text-3xl font-semibold">Perfect Theme</h1>
+
+        <div class="w-[80%] h-20 flex justify-center items-center container">
+            <div class="flex justify-center items-center list-none navlabel">
+                <li class="p-5 mr-4 lictn">
+                    <div class=" skewtextctn">
+                        <a href="" class="text-xl text-black article">Article</a>
+                    </div>
+                </li>
+                <li class="p-5 mr-4"><a href="" class="text-xl">About</a></li>
+            </div>
+
+
+        </div>
+
+        <div class=" transform ">
+            <span class="text-xs flex justify-center items-center flex-col">
+                <div class="w-10 h-[2px] bg-black"></div>
+                <span class="p-1 "> menu</span>
+                <div class="w-10 h-[2px] bg-black font-semibold"></div>
+            </span>
+        </div>
+    </nav>
+
+</body>
+
+</html>
