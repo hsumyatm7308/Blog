@@ -3,31 +3,41 @@
 
 <!-- Header -->
     <header id="header">
-        <h1><a href="index.html">
-            <span class="text-muted small me-2"> {{ Auth::user()->name }} </span>
-            <img src="./assets/img/users/user1.jpg" class="rounded-circle" width="25" />    
-        </a></h1>
-        <nav class="links">
-            <ul>
-                <li><a href="#">Lorem</a></li>
-                <li><a href="#">Ipsum</a></li>
-                <li><a href="#">Feugiat</a></li>
-                <li><a href="#">Tempus</a></li>
-                <li><a href="#">Adipiscing</a></li>
-            </ul>
-        </nav>
+
         <nav class="main">
             <ul>
+                <li class="menu">
+                    <a class="fa-bars" href="#menu">Menu</a>
+                </li>
                 <li class="search ">
                     <form method="get" action="" class="px-3">
                         <input type="search" name="nav_search" id="search_btn" class="outline-none px-2"  placeholder="Search" />
                     </form>
                 </li>
-                <li class="menu">
-                    <a class="fa-bars" href="#menu">Menu</a>
-                </li>
+               
             </ul>
         </nav>
+
+      
+        <nav class="links flex justify-end">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="#">Following</a></li>
+                <li><a href="{{route('posts.index')}}">Post</a></li>
+                <li><a href="#">Save</a></li>
+                <li><span>
+                    <i class="far fa-bell"></i>    
+                </span></li>
+            </ul>
+        </nav>
+        <h1><a href="index.html" class="flex justify-center items-center space-x-2">
+            <div class="w-8 h-8 bg-gray-300 flex justify-center item-center rounded-full overflow-hidden">
+               <img src="{{asset('./images/avatar.jpg')}}" />    
+            </div>
+
+           <div class="text-muted small me-2"> {{ Auth::user()->name }} </div>
+       </a></h1>
+     
     </header>
 	<!-- Menu -->
     <section id="menu">
@@ -43,9 +53,8 @@
         <section>
             <ul class="links">
                 <li>
-                    <a href="#">
-                        <h3>Lorem ipsum</h3>
-                        <p>Feugiat tempus veroeros dolor</p>
+                    <a href="{{route('posts.create')}}">
+                        <h3>Create Post</h3>
                     </a>
                 </li>
                 <li>

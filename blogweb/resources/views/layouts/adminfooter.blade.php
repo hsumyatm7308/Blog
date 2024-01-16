@@ -10,6 +10,10 @@
 {{-- custom js  --}}
 <script src="{{asset('assets/js/main.js')}}"></script>
 
+{{-- extra js  --}}
+@yield('script');
+
+
 </body>
 
 </html>

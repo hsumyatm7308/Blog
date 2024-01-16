@@ -8,13 +8,18 @@
         @include('layouts.adminnavheader')
 
         {{-- Menu  --}}
-        @include('layouts.adminnavheader')
+        {{-- @include('layouts.adminnavheader') --}}
 
         {{-- Main Post  --}}
-        @include('layouts.adminmain')
+        <div id="main">
+
+           @yield('feed')
+        </div>
+
 
         {{-- Sidebar  --}}
-        @include('layouts.adminsidebar')
+        @yield('sidebar')
+        {{-- @include('layouts.adminsidebar') --}}
 
 	</div>
 

@@ -16,6 +16,9 @@
 
         {{-- custom css  --}}
 		<link rel="stylesheet" href="{{asset('assets/css/main.css')}}" />
+
+		{{-- extra css --}}
+		@yield('css')
 	</head>
     <body class="is-preload">
 
