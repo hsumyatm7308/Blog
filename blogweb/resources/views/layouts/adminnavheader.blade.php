@@ -21,7 +21,7 @@
       
         <nav class="links flex justify-end">
             <ul>
-                <li><a href="">Home</a></li>
+                <li><a href="{{route('home.index')}}">Home</a></li>
                 <li><a href="#">Following</a></li>
                 <li><a href="{{route('posts.index')}}">Post</a></li>
                 <li><a href="#">Save</a></li>

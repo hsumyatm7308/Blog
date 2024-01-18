@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->string('title');
             $table->string('slug');
             $table->string('description');
-            $table->string('content');
-            $table->string('tag');
+            $table->text('content');
+            $table->string('tag_id');
             $table->bigInteger('user_id');
             $table->timestamps();
         });
