@@ -30,13 +30,15 @@
                 </span></li>
             </ul>
         </nav>
-        <h1><a href="index.html" class="flex justify-center items-center space-x-2">
+        <h1><a href="javascript:void(0)" class="flex justify-center items-center space-x-2">
             <div class="w-8 h-8 bg-gray-300 flex justify-center item-center rounded-full overflow-hidden">
                <img src="{{asset('./images/avatar.jpg')}}" />    
             </div>
 
            <div class="text-muted small me-2"> {{ Auth::user()->name }} </div>
        </a></h1>
+
+
      
     </header>
 	<!-- Menu -->
@@ -59,8 +61,7 @@
                 </li>
                 <li>
                     <a href="#">
-                        <h3>Dolor sit amet</h3>
-                        <p>Sed vitae justo condimentum</p>
+                        <h3>Status</h3>
                     </a>
                 </li>
                 <li>

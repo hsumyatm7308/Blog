@@ -11,7 +11,7 @@
 			</div>
 			<div class="meta">
 				<time class="published" datetime="2015-11-01">{{date('d F Y')}}</time>
-				<a href="#" class="author"><span class="name">Jane Doe</span>
+				<a href="#" class="author"><span class="name">{{$post->user['name']}}</span>
 					<img src="{{$post->image}}" alt="" />
 				</a>
 			</div>

@@ -13,16 +13,17 @@
         {{-- create post  --}}
         <section > 
             <div  class="w-[100%] bg-[#f4f4f4]">
-                <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="md:flex md:justify-flex">
+                <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="md:flex md:justify-flex">
                     @csrf
-                    @method('POST')
+                    @method('PUT')
+
 
                       <div class="w-full px-10 py-5  mt-10">
                         <div class="border-2 border-gray-300 border-dashed  p-6 relative">
 
                             <input type="file" id="file" name="image" class="w-full h-full absolute inset-0 z-50 opacity-0" onchange="fileview(event)" />
                             <div class="text-center">
-                                <img id="preview" src="{{asset('images/logo.jpg')}}" class="w-20 h-20 object-cover  mx-auto" />
+                                <img id="preview" src="{{asset($post->image)}}" class="w-20 h-20 object-cover  mx-auto" />
                                 <h3 class="text-gray-900 font-medium mt-2">
                                     <label for="file" class="">
                                         <span>Click here to upload your</span>
@@ -39,26 +40,25 @@
                     <div class="md:grid md:grid-cols-2 md:gap-3">
                         <div class="w-full mb-3 me-10">
                             <label for="title">Title</label>
-                            <input type="text" name="title" id="title" class="w-full" placeholder="Enter your title">
+                            <input type="text" name="title" id="title" class="w-full" placeholder="Enter your title" value="{{$post->title}}">
                         </div>
                         <div class="w-full mb-3 ">
                             <label for="tag_id">Tag</label>
-                            <input type="text" name="tag_id" name="tag_id" id="tag_id" class="w-full" placeholder="Tag">
+                            <input type="text" name="tag_id" name="tag_id" id="tag_id" class="w-full" placeholder="Tag" value="{{$post->tag_id}}">
                         </div>
                         <div class="md:col-span-2 w-full mb-3">
                             <label for="description">Description</label>
-                            <input type="text" name="description" id="description" class="w-full" placeholder="Description">
+                            <input type="text" name="description" id="description" class="w-full" placeholder="Description" value="{{$post->description}}">
                         </div>
                         <div class="md:col-span-2 w-full mb-3" >
                             <label for="content">Content</label>
-                            <textarea name="content" id="content" class="w-full" cols="30" rows="10"></textarea>
+                            <textarea name="content" id="content" class="w-full" cols="30" rows="10">{{$post->content}}</textarea>
                         </div>
 
-                        <div class="md:col-span-2 w-full mb-3 text-end space-x-2">
-                            <button><a href="{{ route('posts.index') }}" class="">Cancel</a></button>
-                            <button type="submit" class="bg-gray-300">Update</button>
+                        <div class="md:col-span-2 w-full mb-3 text-end space-x-2" >
+                           <button> <a href="{{route('posts.show',$post->id)}}" class=""> Cancle</a></button>
+                           <button type="submit" class="bg-gray-300"> Update</button>
                         </div>
-                        
                     </div>
 
 
@@ -79,26 +79,9 @@
  <script>
 
 function fileview(event){
-        // console.log(event);
         const getinput = event.target;
-        // console.log(getinput);
-
         const getpreview = document.getElementById('preview');
-        // console.log(getpreview.src);
-
-        // var filereader = new FileReader();  //object 
-        // filereader.readAsDataURL(getinput.files[0]); //method
-
-        // console.log(getinput.files);
-        // console.log(getinput.files[0]);
-        // console.log(getinput.files[0].size);
-
-       //object // URL.createObjectURL()//create temporarity file / binary code change
-        // console.log(URL.createObjectURL(getinput.files[0]));
-
         getpreview.src = URL.createObjectURL(getinput.files[0]);
-
-
     }
  </script>
 @endsection
