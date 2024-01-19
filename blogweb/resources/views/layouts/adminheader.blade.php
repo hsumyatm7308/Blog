@@ -16,6 +16,8 @@
 		{{-- boostrap  --}}
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+		<!-- jqueryui css1 js1 -->
+		<link href="{{asset('./assets/libs/jquery-ui-1.13.2.custom/jquery-ui.min.css')}}" rel="stylesheet" type="text/css" />
 
         {{-- custom css  --}}
 		<link rel="stylesheet" href="{{asset('assets/css/main.css')}}" />

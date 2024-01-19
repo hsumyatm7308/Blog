@@ -20,7 +20,7 @@
 				</a>
 			</div>
 		</header>
-		<a href="{{route('posts.show',$post->id)}}" class="image featured"><img src="{{asset($post->image)}}" alt="" /></a>
+		<a href="{{route('posts.show',$post->id)}}" class="image featured  aspect-video center"><img src="{{asset($post->image)}}" alt="" /></a>
 		<p>{!! Str::limit($post->content, 400) !!}</p>
 		<footer class="mt-4">
 			<ul class="actions">

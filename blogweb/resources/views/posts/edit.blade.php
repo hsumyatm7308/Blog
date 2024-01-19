@@ -87,16 +87,11 @@
 
 
 @section('css')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
 @endsection
 
 @section('script')
-// summernote css1 js1
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
  <script>
 
     function fileview(event){
@@ -105,19 +100,6 @@
         getpreview.src = URL.createObjectURL(getinput.files[0]);
     }
 
-     // texteditoer for content
-     $('#content').summernote({
-        placeholder: 'Type...',
-        tabsize: 2,
-        height: 150,
-        toolbar: [
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link']],
-        ]
-    });
    
  </script>
 @endsection
