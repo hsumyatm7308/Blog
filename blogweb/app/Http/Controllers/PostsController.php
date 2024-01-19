@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\Status;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use App\Models\Post;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
@@ -12,13 +14,14 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy("id", "desc", )->paginate(10);
+        $posts = Post::orderBy("id", "desc", )->paginate(3)->withQueryString();
         return view("posts.index", compact("posts"));
     }
 
     public function create()
     {
-        return view("posts.create");
+        $data['statuses'] = Status::all();
+        return view("posts.create", $data);
     }
 
     public function store(Request $request)
@@ -28,7 +31,8 @@ class PostsController extends Controller
             'title' => 'required|max:350',
             'description' => 'max:500',
             'content' => 'required',
-            'tag_id' => 'nullable'
+            'tag_id' => 'nullable',
+            'status_id' => 'required'
 
         ]);
 
@@ -39,6 +43,7 @@ class PostsController extends Controller
         $post = new Post();
         $post->title = $request->title;
         $post->tag_id = $request->tag_id;
+        $post->status_id = $request->status_id;
         $post->slug = Str::slug($request['title']);
         $post->description = $request->description;
         $post->content = $request->content;
@@ -74,7 +79,8 @@ class PostsController extends Controller
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.edit')->with('post', $post);
+        $data['statuses'] = Status::all();
+        return view('posts.edit', $data)->with('post', $post);
 
     }
 
@@ -85,7 +91,8 @@ class PostsController extends Controller
             'title' => 'required|max:350',
             'description' => 'max:500',
             'content' => 'required',
-            'tag_id' => 'nullable'
+            'tag_id' => 'nullable',
+            'status_id' => 'required'
 
         ]);
 
@@ -97,6 +104,7 @@ class PostsController extends Controller
 
         $post->title = $request->title;
         $post->tag_id = $request->tag_id;
+        $post->status_id = $request->status_id;
         $post->slug = Str::slug($request['title']);
         $post->description = $request->description;
         $post->content = $request->content;

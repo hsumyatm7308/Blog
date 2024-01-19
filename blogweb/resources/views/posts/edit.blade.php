@@ -55,6 +55,18 @@
                             <textarea name="content" id="content" class="w-full" cols="30" rows="10">{{$post->content}}</textarea>
                         </div>
 
+
+                        <div class="w-full mb-3">
+                            <label for="status_id">Status</label>
+                            <select name="status_id" id="status_id" class="form-control form-control-sm rounded">
+
+                                @foreach($statuses as $status)
+                                <option value="{{$status->id}}">{{$status->name}}</option>
+                                @endforeach
+
+                            </select>                        
+                        </div>
+
                         <div class="md:col-span-2 w-full mb-3 text-end space-x-2" >
                            <button> <a href="{{route('posts.show',$post->id)}}" class=""> Cancle</a></button>
                            <button type="submit" class="bg-gray-300"> Update</button>
@@ -74,14 +86,38 @@
 </html>
 
 
-@section('script')
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
+@endsection
+
+@section('script')
+// summernote css1 js1
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
  <script>
 
-function fileview(event){
+    function fileview(event){
         const getinput = event.target;
         const getpreview = document.getElementById('preview');
         getpreview.src = URL.createObjectURL(getinput.files[0]);
     }
+
+     // texteditoer for content
+     $('#content').summernote({
+        placeholder: 'Type...',
+        tabsize: 2,
+        height: 150,
+        toolbar: [
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link']],
+        ]
+    });
+   
  </script>
 @endsection

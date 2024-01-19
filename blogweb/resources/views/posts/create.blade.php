@@ -45,18 +45,36 @@
                             <label for="tag_id">Tag</label>
                             <input type="text" name="tag_id" name="tag_id" id="tag_id" class="w-full" placeholder="Tag">
                         </div>
+
                         <div class="md:col-span-2 w-full mb-3">
                             <label for="description">Description</label>
                             <input type="text" name="description" id="description" class="w-full" placeholder="Description">
                         </div>
+
+
+                       
                         <div class="md:col-span-2 w-full mb-3" >
                             <label for="content">Content</label>
                             <textarea name="content" id="content" class="w-full" cols="30" rows="10"></textarea>
                         </div>
 
-                        <div class="md:col-span-2 w-full mb-3 text-end space-x-2">
+
+
+
+                        <div class="w-full mb-3">
+                            <label for="status_id">Status</label>
+                            <select name="status_id" id="status_id" class="form-control form-control-sm rounded">
+
+                                @foreach($statuses as $status)
+                                <option value="{{$status->id}}">{{$status->name}}</option>
+                                @endforeach
+
+                            </select>                        
+                        </div>
+
+                        <div class=" w-full mb-3 flex justify-end items-end space-x-2">
                             <button><a href="{{ route('posts.index') }}" class="">Cancel</a></button>
-                            <button type="submit" class="bg-gray-300">Update</button>
+                            <button type="submit" class="bg-gray-300">Submit</button>
                         </div>
                         
                     </div>
@@ -74,31 +92,40 @@
 </html>
 
 
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+@endsection
+
 @section('script')
+// summernote css1 js1
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
  <script>
 
-function fileview(event){
-        // console.log(event);
-        const getinput = event.target;
-        // console.log(getinput);
+    function fileview(event){
+            // console.log(event);
+            const getinput = event.target;
+            const getpreview = document.getElementById('preview');
+            getpreview.src = URL.createObjectURL(getinput.files[0]);
+        }
 
-        const getpreview = document.getElementById('preview');
-        // console.log(getpreview.src);
-
-        // var filereader = new FileReader();  //object 
-        // filereader.readAsDataURL(getinput.files[0]); //method
-
-        // console.log(getinput.files);
-        // console.log(getinput.files[0]);
-        // console.log(getinput.files[0].size);
-
-       //object // URL.createObjectURL()//create temporarity file / binary code change
-        // console.log(URL.createObjectURL(getinput.files[0]));
-
-        getpreview.src = URL.createObjectURL(getinput.files[0]);
-
-
-    }
+    // texteditoer for content
+      $('#content').summernote({
+        placeholder: 'Type...',
+        tabsize: 2,
+        height: 150,
+        toolbar: [
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link']],
+        ]
+    });
+   
  </script>
 @endsection

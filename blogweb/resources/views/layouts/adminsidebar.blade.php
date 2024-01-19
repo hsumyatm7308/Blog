@@ -27,7 +27,7 @@
                 <!-- Mini Post -->
                 <article class="mini-post">
                     <header>
-                        <h3><a href="single.html">Status</a></h3>
+                        <h3><a href="single.html">Rutrum neque accumsan</a></h3>
                         <time class="published" datetime="2015-10-19">October 19, 2015</time>
                         <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
                     </header>

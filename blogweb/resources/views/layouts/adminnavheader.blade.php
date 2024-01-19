@@ -82,7 +82,10 @@
         <!-- Actions -->
         <section>
             <ul class="actions stacked">
-                <li><a href="#" class="button large fit">Log In</a></li>
+                {{-- <li><a href="#" class="button large fit"></a></li> --}}
+
+                <a href="javascript:void(0);" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logoutform').submit()">Logout</a>
+                <form id="logoutform" action="{{route('logout')}}" method="POST">@csrf</form>
             </ul>
         </section>
 

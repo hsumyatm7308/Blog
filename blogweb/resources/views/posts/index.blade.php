@@ -8,6 +8,10 @@
 			<div class="title">
 				<h2><a href="{{route('posts.show',$post->id)}}">{{$post->title}}</a></h2>
 				<p class="mt-2">{{$post->description}}</p>
+				<div class="mt-3 text-xs text-[#2ebaae]">
+					<p>{{$post->status->name}}</p>
+				</div>
+
 			</div>
 			<div class="meta">
 				<time class="published" datetime="2015-11-01">{{date('d F Y')}}</time>
@@ -17,7 +21,7 @@
 			</div>
 		</header>
 		<a href="{{route('posts.show',$post->id)}}" class="image featured"><img src="{{asset($post->image)}}" alt="" /></a>
-		<p>{{ Str::limit($post->content, 400) }}</p>
+		<p>{!! Str::limit($post->content, 400) !!}</p>
 		<footer class="mt-4">
 			<ul class="actions">
 				<li><a href="{{route('posts.show',$post->id)}}" class="button large">Continue Reading</a></li>
@@ -30,6 +34,12 @@
 		</footer>
 	</article>
 	@endforeach
+
+
+	{{$posts->links()}}
+	
+
+
 
 
 @endsection
