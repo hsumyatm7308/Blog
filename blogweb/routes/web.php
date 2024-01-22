@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomesController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -30,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/posts', PostsController::class);
+    Route::resource('comments', CommentsController::class);
+
 });
 
 require __DIR__ . '/auth.php';

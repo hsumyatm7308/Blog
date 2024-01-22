@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Status;
 
@@ -14,7 +15,7 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy("id", "desc", )->paginate(3)->withQueryString();
+        $posts = Post::orderBy('id', 'desc')->paginate(3)->withQueryString();
         return view("posts.index", compact("posts"));
     }
 
@@ -26,15 +27,10 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'image' => 'image|mimes:jpg,jpeg,png',
-            'title' => 'required|max:350',
-            'description' => 'max:500',
-            'content' => 'required',
-            'tag_id' => 'nullable',
-            'status_id' => 'required'
+        // $this->validate($request, [
 
-        ]);
+
+        // ]);
 
         $user = Auth::user();
         $user_id = $user['id'];
@@ -73,7 +69,8 @@ class PostsController extends Controller
     public function show(string $id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.show', compact('post'));
+        $comments = Comment::where('commentable_id', $post->id)->where('commentable_type', 'App\Models\Post')->orderBy('created_at', 'desc')->get();
+        return view('posts.show', compact('post', 'comments'));
     }
 
     public function edit(string $id)
@@ -149,7 +146,12 @@ class PostsController extends Controller
         }
 
         $post->delete();
+        session()->flash('success', 'Delete Successfully');
         return redirect()->route('posts.index');
     }
+
+
+
+
 
 }
