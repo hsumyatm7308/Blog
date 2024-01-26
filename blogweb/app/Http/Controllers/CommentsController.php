@@ -12,8 +12,17 @@ class CommentsController extends Controller
     public function edit(string $id)
     {
         $comments = Comment::findOrFail($id);
+        return view("posts.edit", $comments);
 
     }
+
+    // In your CommentController
+    public function show($id)
+    {
+        $comment = Comment::findOrFail($id);
+        return view('posts.show', compact('comment'));
+    }
+
     public function store(Request $request)
     {
 
@@ -30,4 +39,23 @@ class CommentsController extends Controller
         return redirect()->back();
 
     }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'editdescription' => 'required',
+        ]);
+
+        $comment = Comment::findOrFail($id);
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        $comment->description = $request->input('editdescription');
+        $comment->user_id = $user_id;
+
+        $comment->save();
+
+        return redirect(route('posts.show', $comment->commentable_id))->with('success', 'Comment updated successfully');
+    }
+
 }

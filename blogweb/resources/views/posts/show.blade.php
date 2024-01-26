@@ -136,7 +136,7 @@
                                 @foreach($comments as $comment)
                                 <li class="bg-[#ffff]  flex justify-between  items-center relative mt-2 mb-2 px-3 py-3 ">
 								
-                                    <div>
+                                    <div class="">
 										<div class="mb-2">
 										    <p>	{{ucwords($comment -> user['name'])}} </p>
 
@@ -150,6 +150,9 @@
 									   </div>
 
                                     </div>
+
+
+								
 
 
                                     <div class="self-end relative">
@@ -176,7 +179,7 @@
 														<span class="text-red-500 delete-btns" data-idx="{{$post -> id}}"><i class="far fa-trash-alt"></i> Delete</span>
 													</a>
 
-													<form id="formdelete-{{$post -> id}}" action="{{route('posts.destroy',$post -> id)}}" method="POST" class="hidden">
+													<form id="formdelete-{{$post -> id}}" action="{{route('posts.destroy',$post -> id)}}" method="POST" class="">
 														@csrf 
 														@method('DELETE')
 													
@@ -208,7 +211,7 @@
 
 
 				 <!--Start edit model-->
- <div id="editmodal" class=" fade">
+ <div id="editmodal" class="modal my-auto">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-0">
 
@@ -218,50 +221,29 @@
             </div>
 
             <div class="modal-body">
-                <form id="formaction" action="" method="POST" enctype="multipart/form-data">
-           
-                    {{csrf_field()}}
-                    {{method_field('PUT')}}
+				<form id="formaction" action="{{ route('comments.update',$comment->id)}}" method="POST" enctype="multipart/form-data">
+					{{ csrf_field() }}
+					{{ method_field('PUT') }}
             
-                   <div class="row align-items-end">
+                   <div class="">
                     
 
-                    <div class="col-md-7 form-group">
-                        <label for="editclassdate"> Class Date <span class="text-danger">*</span></label>
-
-    
-                        <input type="date" name="editclassdate" id="editclassdate" class="form-control-sm">
-
-                       </div>
-
-
-                       <div class="col-md-7 form-group">
-                        <label for="editpost_id"> Class <span class="text-danger">*</span></label>
-
-                        {{-- <select name="editpost_id" id="editpost_id" class="form-control form-control-sm rounded-0">
-                            @foreach($posts as $id=>$post)
-                            <option value="{{$id}}">{{$post->title}}</option>
-                        @endforeach --}}
-                        
-
-                           
-                            
-                        </select>
-
-                       </div>
 
                        <div class="col-md-12 form-group">
-                        <label for="editurl"> Class <span class="text-danger">*</span></label>
+                        <label for="editdescription"> Comment <span class="text-danger">*</span></label>
 
-                        <input type="text" name="editurl" id="editurl" class="form-control">
+                        <input type="text" name="editdescription" id="editdescription" class=" p-4" value="
+						 {{old('description')}}
+						">
                        </div>
 
 
                     
                     </div>
                
-                       <div class="col-md-2">
-                            <button type="submit" class="btn btn-primary btn-sm rounded-0">Update</button>                             
+                       <div class="col-md-12 text-end mt-3 space-x-3">
+							<a href="{{route('posts.show',$post->id)}}" class="border-b-0"><button class="btn p-2">Cancle</button> </a>                            
+							<button type="submit" class="btn bg-[#2ebaae] p-2 hover:bg-transparent">Update</button>                             
                        </div>                  
                    </div>
     
@@ -321,9 +303,11 @@ $(document).on('click','.editform',function(e){
     $("#editurl").val($(this).data('url'));
     
 
+   
     const getid = $(this).attr('data-id');
-            
-    $("#formaction").attr("action",`/edulinks/${getid}`);
+    console.log(getid);
+
+    $("#formaction").attr("action", `/comments/${getid}`);
 
     e.preventDefault();
 });

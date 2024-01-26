@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/posts', PostsController::class);
-    Route::resource('comments', CommentsController::class);
+    Route::resource('/comments', CommentsController::class);
 
 });
 
